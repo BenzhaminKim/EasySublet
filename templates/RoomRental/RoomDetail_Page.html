@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Room Detail
+{% endblock title%}
+
+{% block content %}
+<h1>Room Detaail Page</h1>
+
+<h2>{{ room.title }}</h2>
+
+<h2>{{ room.content }}</h2>
+
+<h2>{{ room.created_on }}</h2>
+
+{% endblock content %}
