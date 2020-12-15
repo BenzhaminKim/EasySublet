@@ -6,9 +6,10 @@ Room Create
 
 {% block content %}
 <h1>{{page}}</h1>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
+    {{room_form.as_p}}
+    {{image_form.as_p}}
     <input type="submit"/>
 </form>
 {% endblock content %}

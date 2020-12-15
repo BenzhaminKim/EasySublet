@@ -46,7 +46,11 @@
           </ul>
 
           <span class="material-icons">
-             <a class="text-white" href="{% url 'log_in_view' %}"> account_circle</a>
+            {% if user.is_authenticated %}
+             <a class="text-white" href="{% url 'logout_view' %}"> account_circle</a>
+            {% else %}
+              <a class="btn btn-outline-light" href="{% url 'login_view' %}">SIGN IN</a>
+            {% endif %}
           </span>
          <!-- <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

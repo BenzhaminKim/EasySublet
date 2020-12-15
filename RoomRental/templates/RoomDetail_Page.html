@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title%}
 Room Detail
@@ -9,8 +10,12 @@ Room Detail
 
 <h2>{{ room.title }}</h2>
 
-<h2>{{ room.content }}</h2>
+<h2>{{ room.description }}</h2>
 
 <h2>{{ room.created_on }}</h2>
+
+{% for image in images %}
+    <img src="{{image.image.url}}"/>
+{% endfor %}
 
 {% endblock content %}
