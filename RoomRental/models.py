@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.timezone import now
-
+import PIL
 # Create your models here.
 
 User = settings.AUTH_USER_MODEL
@@ -30,6 +30,13 @@ class Image(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/')
     default = models.BooleanField(default=False)
+
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
+        img = PIL.Image.open(self.image.path)
+        output_size = (500,300)
+        img.thumbnail(output_size)
+        img.save(self.image.path)
 
     def __str__(self):
         return self.image.name

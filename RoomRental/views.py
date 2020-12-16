@@ -40,11 +40,8 @@ def room_create_view(request,*args,**kwargs):
     if request.method == 'POST':
         room_form = RoomForm(request.POST)
         images = request.FILES.getlist('image')
-        print(images)
         if room_form.is_valid():
-            title = room_form.cleaned_data['title']
-            description = room_form.cleaned_data['description']
-            room = Room.objects.create(title=title, description=description)
+            room = room_form.save()
             room.user = request.user
             room.save()
             for image in images:
@@ -64,11 +61,19 @@ def room_update_view(request,room_id,*args,**kwargs):
     '''
     room = get_object_or_404(Room, pk = room_id)
     if request.user == room.user:
-        form = RoomForm(request.POST or None, instance=room)
-        if form.is_valid():
-            form.save()
+        room_form = RoomForm(request.POST or None, instance=room)
+        image_form = ImageForm()
+        images = request.FILES.getlist('image')
+        print(images)
+        if room_form.is_valid():
+            room_form.save()
+            if len(images) > 0:
+                prev_images = Image.objects.filter(room = room)
+                prev_images.delete()
+                for image in images:
+                    Image.objects.create(room=room, image=image)
             return redirect('room_list_view')
-        context = {'page':'Update Room page','form' : form}
+        context = {'page':'Update Room page','room_form' : room_form,'image_form':image_form}
         return render(request,'RoomCreate_Page.html',context,status=200)
     else:
         return redirect('room_list_view')
