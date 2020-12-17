@@ -39,7 +39,8 @@ def room_detail_view(request,room_id,*args,**kwargs):
 
     room = get_object_or_404(Room, pk = room_id)
     images = Image.objects.filter(room=room)
-    context = {'room': room, 'images':images}
+    
+    context = {'room': room, 'images':images }
 
     return render(request,'RoomDetail_Page.html',context,status=200)
 

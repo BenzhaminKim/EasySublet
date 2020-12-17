@@ -45,7 +45,7 @@ class Image(models.Model):
     def save(self,*args,**kwargs):
         super().save(*args,**kwargs)
         img = PIL.Image.open(self.image.path)
-        output_size = (500,300)
+        output_size = (1000,1000)
         img.thumbnail(output_size)
         img.save(self.image.path)
 

@@ -8,9 +8,26 @@ Room Detail
 {% block content %}
 <div class="row">
     <div class="col-6">
-        <img src="{{ room.images }}">
-        <h1>{{ room.images }}</h1>
-        
+        <img class="rounded" style="width: 100%;" src="{{ images.1.image.url}}">
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-6">
+                <img class="rounded" style="width: 100%;"  src="{{ images.2.image.url}}">
+            </div>
+            <div class="col-6">
+                <img class="rounded" style="width: 100%;"  src="{{ images.3.image.url}}">
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-6">
+                <img class="rounded" style="width: 100%;"  src="{{ images.4.image.url}}">
+            </div>
+            <div class="col-6">
+                <img class="rounded" style="width: 100%;"  src="{{ images.5.image.url}}">
+            </div>
+            
+        </div>
     </div>
 </div>
 
