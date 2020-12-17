@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Room List
+{% endblock title%}
+
+{% block content %}
+<h1>My Room List Page</h1>
+
+{% for room in rooms %}
+<h3>
+    <a href="{% url 'room_detail_view' room.id %}">{{ room.title }}</a> 
+    <a href="{% url 'room_update_view' room.id %}" class="btn btn-warning">Update</a>
+    <a href="{% url 'room_delete_view' room.id %}" class="btn btn-danger">Delete</a>
+</h3>
+{% endfor %}
+{% endblock content %}

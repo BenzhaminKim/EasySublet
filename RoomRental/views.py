@@ -20,6 +20,17 @@ def room_list_view(request, *args, **kwargs):
     context = {'rooms':rooms}
 
     return render(request,'RoomList_Page.html',context,status=200)
+@login_required
+def my_room_list_view(request, *args, **kwargs):
+    '''
+    Room List Page View
+    '''
+
+    rooms = Room.objects.filter(user=request.user)
+    context = {'rooms':rooms}
+
+    return render(request,'MyRoom_Page.html',context,status=200)
+
 
 def room_detail_view(request,room_id,*args,**kwargs):
     '''
@@ -40,6 +51,7 @@ def room_create_view(request,*args,**kwargs):
     if request.method == 'POST':
         room_form = RoomForm(request.POST)
         images = request.FILES.getlist('image')
+        print(room_form.is_valid(), room_form.cleaned_data)
         if room_form.is_valid():
             room = room_form.save()
             room.user = request.user

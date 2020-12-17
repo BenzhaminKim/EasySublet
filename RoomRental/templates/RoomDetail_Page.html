@@ -6,24 +6,254 @@ Room Detail
 {% endblock title%}
 
 {% block content %}
-<h1>Room Detaail Page</h1>
+<div class="row">
+    <div class="col-6">
+        <img src="{{ room.images }}">
+        <h1>{{ room.images }}</h1>
+        
+    </div>
+</div>
 
-<h2>{{ room.title }}</h2>
-<h2>{{ room.address }}</h2>
-<h2>{{ room.latitude }}</h2>
-<h2>{{ room.longitude }}</h2>
-<h2>{{ room.description }}</h2>
-<h2>{{ room.price }}</h2>
+<div class="pb-5">
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-center">{{ room.title }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <span class="material-icons">
+                add_location
+            </span>
+            {{ room.address }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 pt-1 pb-1">
+            <h3 class="text-center">Residence</h3>
 
-<h2>{{ room.has_laundry }}</h2>
-<h2>{{ room.has_fridge }}</h2>
-<h2>{{ room.has_wifi }}</h2>
-<h2>{{ room.movein_date }}</h2>
+            <div class="row">
+                <div class="col-2 text-center">
+                    <b class="material-icons">
+                        monetization_on
+                    </b>
+                </div>
+                <div class="col-4 text-center">
+                    <b>Price/month</b>
+                </div>
+                <div class="col-6">
+                    <p class="text-center">{{ room.price }}</p>
+                </div>
+            </div>
 
-<h2>{{ room.created_on }}</h2>
+            
+            <div class="row">
+                <div class="col-2 text-center">
+                    <b class="material-icons">
+                        timer
+                    </b>
+                </div>
+                <div class="col-4 text-center">
+                    <b>Available Date</b>
+                </div>
+                <div class="col-6">
+                    <p class="text-center">{{ room.movein_date }}</p>
+                </div>
+            </div>
 
-{% for image in images %}
-    <img src="{{image.image.url}}"/>
-{% endfor %}
+
+    
+        </div>
+        <div class="col-lg-6 col-sm-12 pt-1 pb-1">
+            <h3 class="text-center">Amenities</h3>
+            {% if room.is_smoking %}
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <span class="material-icons">
+                            smoking_rooms
+                        </span>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-center">Smoking</p>
+                    </div>
+                </div>
+             {% endif %}
+             {% if room.is_pet %}
+                 <div class="row">
+                     <div class="col-6 text-center">
+                         <span class="material-icons">
+                             pets
+                         </span>
+                     </div>
+                     <div class="col-6">
+                         <p class="text-center">Pet Friendly</p>
+                     </div>
+                 </div>
+              {% endif %}
+              {% if room.is_parking %}
+                  <div class="row">
+                      <div class="col-6 text-center">
+                          <span class="material-icons">
+                            local_parking
+                          </span>
+                      </div>
+                      <div class="col-6">
+                          <p class="text-center">Parking</p>
+                      </div>
+                  </div>
+               {% endif %}
+            {% if room.has_hydro %}
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <span class="material-icons">
+                            flash_on
+                        </span>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-center">Hydro</p>
+                    </div>
+                </div>
+             {% endif %}
+             {% if room.has_aircondition %}
+             <div class="row">
+                 <div class="col-6 text-center">
+                     <span class="material-icons">
+                         ac_unit
+                     </span>
+                 </div>
+                 <div class="col-6">
+                     <p class="text-center">Air Conditioning</p>
+                 </div>
+             </div>
+          {% endif %}
+          {% if room.has_water %}
+          <div class="row">
+              <div class="col-6 text-center">
+                  <span class="material-icons">
+                      waves
+                  </span>
+              </div>
+              <div class="col-6">
+                  <p class="text-center">Water</p>
+              </div>
+          </div>
+       {% endif %}
+       {% if room.has_heat %}
+       <div class="row">
+           <div class="col-6 text-center">
+               <span class="material-icons">
+                   fireplace
+               </span>
+           </div>
+           <div class="col-6">
+               <p class="text-center">Heat</p>
+           </div>
+       </div>
+    {% endif %}
+    {% if room.has_wifi %}
+    <div class="row">
+        <div class="col-6 text-center">
+            <span class="material-icons">
+                wifi
+            </span>
+        </div>
+        <div class="col-6">
+            <p class="text-center">Wifi</p>
+        </div>
+    </div>
+ {% endif %}
+ {% if room.has_tv %}
+ <div class="row">
+     <div class="col-6 text-center">
+         <span class="material-icons">
+             tv
+         </span>
+     </div>
+     <div class="col-6">
+         <p class="text-center">TV</p>
+     </div>
+ </div>
+{% endif %}
+{% if room.has_laundry %}
+<div class="row">
+    <div class="col-6 text-center">
+        <span class="material-icons">
+            local_laundry_service
+        </span>
+    </div>
+    <div class="col-6">
+        <p class="text-center">Laundry</p>
+    </div>
+</div>
+{% endif %}
+{% if room.has_fridge %}
+<div class="row">
+    <div class="col-6 text-center">
+        <span class="material-icons">
+            kitchen
+        </span>
+    </div>
+    <div class="col-6">
+        <p class="text-center">Fridge</p>
+    </div>
+</div>
+{% endif %}
+{% if room.has_dishwasher %}
+<div class="row">
+    <div class="col-6 text-center">
+        <span class="material-icons">
+            web_asset
+        </span>
+    </div>
+    <div class="col-6">
+        <p class="text-center">Dish Wahsher</p>
+    </div>
+</div>
+{% endif %}
+{% if room.has_dryer %}
+<div class="row">
+    <div class="col-6 text-center">
+        <span class="material-icons">
+            dry
+        </span>
+    </div>
+    <div class="col-6">
+        <p class="text-center">Dryer</p>
+    </div>
+</div>
+{% endif %}
+{% if room.has_microwave %}
+<div class="row">
+    <div class="col-6 text-center">
+        <span class="material-icons">
+            microwave
+        </span>
+    </div>
+    <div class="col-6">
+        <p class="text-center">Microwave</p>
+    </div>
+</div>
+{% endif %}
+        </div>
+    </div>
+    <div class="row pt-1 pb-1 border-top">
+        <div class="col-lg-12 pt-1 pb-1">
+            <h2 class="text-dark text-center pt-4 pb-3">Description</h2>
+            <p class="pb-5">{{ room.description }}</p>
+        </div>
+    </div>
+
+    <div class="row pt-5 pb-1 border-top">
+        <div class="col-12">
+            <h2 class="text-center">Location</h2>
+        </div>
+    </div>
+    <div id="map" style="height:350px;">
+
+    </div>
+</div>
+
+
 
 {% endblock content %}

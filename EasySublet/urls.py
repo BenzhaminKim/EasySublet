@@ -17,17 +17,22 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path
-from RoomRental.views import home_view, room_list_view, room_detail_view,room_create_view, room_update_view, room_delete_view
+from RoomRental.views import home_view, room_list_view, room_detail_view,room_create_view, room_update_view, room_delete_view, my_room_list_view
 from Authentication.views import login_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home_view'),
     path('room/list', room_list_view, name='room_list_view'),
+    path('room/myroom', my_room_list_view, name='my_room_list_view'),
     path('room/detail/<int:room_id>', room_detail_view, name='room_detail_view'),
     path('room/update/<int:room_id>', room_update_view, name='room_update_view'),
     path('room/delete/<int:room_id>', room_delete_view, name='room_delete_view'),
     path('room/create', room_create_view, name='room_create_view'),
     path('authentication/login', login_view, name='login_view'),
     path('authentication/logout', logout_view, name='logout_view'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
