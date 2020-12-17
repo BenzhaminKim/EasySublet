@@ -274,3 +274,28 @@ Room Detail
 
 
 {% endblock content %}
+
+{% block js %}
+<script>
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: { lat: 43.6532, lng: -79.3832 },
+        gestureHandling: "none"
+    });
+    var cityCircle = new google.maps.Circle({
+        strokeColor: '#FF9900',
+        strokeOpacity: 0.1,
+        strokeWeight: 1,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: {lat: 43.6532, lng: -79.3832  },
+        radius: 500
+      });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrXGchsr2Z6YkgR5WLTvDhBAfU00aMYf8&callback=initMap"
+type="text/javascript"></script>
+
+{% endblock js %}
