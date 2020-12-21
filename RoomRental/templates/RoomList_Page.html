@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title%}
 Room List
 {% endblock title%}
 
 {% block content %}
-<h1>Room List Page</h1>
 
-{% for room in rooms %}
-<h3>
-    <a href="{% url 'room_detail_view' room.id %}">{{ room.title }}</a> 
-</h3>
-{% endfor %}
+<div id="root"></div>
+
+
 {% endblock content %}
+
+{% block js %}
+<script>
+    $('div').removeClass('container').addClass('conatiner-fluid');
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrXGchsr2Z6YkgR5WLTvDhBAfU00aMYf8">
+</script>
+
+<script crossorigin="anonymous" src="{% static '/react-app/static/frontend/main.js/main.js' %} "></script>
+{% endblock js%}
