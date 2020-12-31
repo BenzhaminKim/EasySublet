@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from RoomRental.views import home_view, room_list_view, room_detail_view,room_create_view, room_update_view, room_delete_view, my_room_list_view
 from Authentication.views import login_view, logout_view
+from RoomRental.api import api_room_list_view,api_room_all_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +32,9 @@ urlpatterns = [
     path('room/create', room_create_view, name='room_create_view'),
     path('authentication/login', login_view, name='login_view'),
     path('authentication/logout', logout_view, name='logout_view'),
+    path('api/room/list', api_room_list_view, name='api_room_list_view'),
+    path('api/room/all', api_room_all_view, name='api_room_all_view'),
+    path('api/',include('RoomRental.urls')),
 ] 
 
 if settings.DEBUG:

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'RoomRental',
-    'Authentication'
+    'Authentication',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

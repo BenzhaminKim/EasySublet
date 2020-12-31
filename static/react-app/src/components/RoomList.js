@@ -1,28 +1,25 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState,useEffect,useRef } from 'react';
 import PageNation from './Pagenation';
 import Room from './Room';
 
-function RoomList() {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
 
+function RoomList({rooms}) {
   return (
     <div >
-
         <div className="text-primary row m-2"><h3 className="col-12 text-center"> Rooms</h3></div>
-
         <div className="row m-0">
-            <Room/>
-            <Room/>
-            <Room/>
-            <Room/>
-            <Room/>
-            <Room/>
+        {rooms.map(room => {
+              return(
+                  <Room key={room.id} roomId={room.id} price={room.price} title={room.title}/>
+              );
+          })}
+
         </div>
         <div className="row">
             <span className="col-lg-12 text-muted text-center font-italic border-top">
                     Rooms Everywhere Near You
-                </span>
+            </span>
         </div>
     </div>
   );
