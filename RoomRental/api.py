@@ -1,7 +1,7 @@
 from rest_framework import status, viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Room
+from .models import Room,Image
 from .serializers import RoomSerializer
 
 
@@ -33,7 +33,7 @@ def api_room_all_view(request,*args,**kwargs):
     if request.method == 'GET':
         serializer = RoomSerializer(rooms,many=True)
         return Response(serializer.data)
-        
+
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     permission_classes = [

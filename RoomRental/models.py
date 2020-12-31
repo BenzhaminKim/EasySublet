@@ -37,7 +37,7 @@ class Room(models.Model):
         return self.title
 
 class Image(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE,related_name="images")
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     default = models.BooleanField(default=False)
