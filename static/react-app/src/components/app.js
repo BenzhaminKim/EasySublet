@@ -27,11 +27,11 @@ export default function App() {
 
 
     return (
-        <div className="row" style={{ width: '100%' }}>
-            <div className="col-3">
+        <div className="row m-0" style={{ width: '100%' }}>
+            <div className="col-3 scroll-container">
                 <RoomList rooms={rooms} />
             </div>
-            <div className="col-9">
+            <div className="col-9 p-0">
                 <GoogleMap onChange={(bounds)=>{
                     setBounds(bounds);
                 }}/>

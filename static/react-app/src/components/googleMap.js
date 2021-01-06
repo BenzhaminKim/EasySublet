@@ -45,10 +45,10 @@ export default function GoogleMap(props) {
   })
   // return map
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "94vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDrXGchsr2Z6YkgR5WLTvDhBAfU00aMYf8' }}
-        defaultCenter={{ lat: 52.6376, lng: -1.135171 }}
+        defaultCenter={{ lat: 43.6532, lng: -79.335171 }}
         defaultZoom={10}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({map})=>{

@@ -1,3 +1,7 @@
+.scroll-container {
+    height: 96vh;
+    overflow-y: scroll;
+}
 .cluster-marker {
     color: #fff;
     background: #1978c8;
@@ -8,6 +12,16 @@
     align-items: center;
   }
   
+  .price-marker {
+    color: #fff;
+    background: #118b44;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 .mainImage {
     background-image: url('../images/background.jpg');
     width: 100%;
