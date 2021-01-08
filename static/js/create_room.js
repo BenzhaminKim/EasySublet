@@ -1,4 +1,68 @@
 
+$(document).ready(function () {
+
+    if(document.getElementById('id_is_parking').checked) {
+        $('#park-yes').removeClass('btn-outline-primary').addClass('btn-primary');
+        $('#park-no').removeClass('btn-primary').addClass('btn-outline-primary');
+    } 
+
+    if(document.getElementById('id_is_pet').checked) {
+        $('#pet-yes').removeClass('btn-outline-primary').addClass('btn-primary');
+        $('#pet-no').removeClass('btn-primary').addClass('btn-outline-primary');
+        console.log('id_is_pet chekced');
+    } 
+
+    if(document.getElementById('id_is_smoking').checked) {
+        $('#smoking-yes').removeClass('btn-outline-primary').addClass('btn-primary');
+        $('#smoking-no').removeClass('btn-primary').addClass('btn-outline-primary');
+    }
+
+    if(document.getElementById('id_has_hydro').checked) {
+        $('#Hydro').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_aircondition').checked) {
+        $('#Airconditioning').toggleClass('btn-outline-primary btn-primary');
+    }
+
+    if(document.getElementById('id_has_water').checked) {
+        $('#Water').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_heat').checked) {
+        $('#Heat').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_wifi').checked) {
+        $('#Wifi').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_tv').checked) {
+        $('#TV').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_laundry').checked) {
+        $('#Landuary').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_dishwasher').checked) {
+        $('#Dishwasher').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_dryer').checked) {
+        $('#Dryer').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_fridge').checked) {
+        $('#Fridge').toggleClass('btn-outline-primary btn-primary');
+    } 
+
+    if(document.getElementById('id_has_microwave').checked) {
+        $('#Microwave').toggleClass('btn-outline-primary btn-primary');
+    } 
+ });
+
+
 $('#park-yes').click(function () {
     $('#id_is_parking').prop('checked', true);
     $('#park-yes').removeClass('btn-outline-primary').addClass('btn-primary');

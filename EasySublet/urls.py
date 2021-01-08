@@ -23,7 +23,7 @@ from RoomRental.api import api_room_list_view,api_room_all_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name='home_view'),
+    path('', room_list_view, name='home_view'),
     path('room/list', room_list_view, name='room_list_view'),
     path('room/myroom', my_room_list_view, name='my_room_list_view'),
     path('room/detail/<int:room_id>', room_detail_view, name='room_detail_view'),

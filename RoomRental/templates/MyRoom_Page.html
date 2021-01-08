@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 
 {% block title%}
-Room List
+My Room List
 {% endblock title%}
 
 {% block content %}
-<h1>My Room List Page</h1>
 
-{% for room in rooms %}
-<h3>
-    <a href="{% url 'room_detail_view' room.id %}">{{ room.title }}</a> 
-    <a href="{% url 'room_update_view' room.id %}" class="btn btn-warning">Update</a>
-    <a href="{% url 'room_delete_view' room.id %}" class="btn btn-danger">Delete</a>
-</h3>
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>My Room List Page</h1>
+    </div>
+</div>
+
+{% for room_with_image in room_with_images %}
+<div class="row p-1">
+    <div class="col-lg-4 col-sm-12">
+        
+        <a href="{% url 'room_detail_view' room_with_image.room.id %}">
+            <img class="rounded" style="width: 100%;" src="{{ room_with_image.images.image.url}}">
+        </a> 
+    </div>
+    <div class="col-lg-4 col-sm-12">
+        <a href="{% url 'room_detail_view' room_with_image.room.id %}">{{ room_with_image.room.title }}</a> 
+    </div>
+    <div class="col-lg-4 col-sm-12">
+        <a href="{% url 'room_update_view' room_with_image.room.id %}" class="btn btn-warning">Update</a>
+        <a href="{% url 'room_delete_view' room_with_image.room.id %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
 {% endfor %}
 {% endblock content %}

@@ -27,8 +27,14 @@ def my_room_list_view(request, *args, **kwargs):
     '''
 
     rooms = Room.objects.filter(user=request.user)
-    context = {'rooms':rooms}
-
+    room_with_images = []
+    for room in rooms:
+        images = Image.objects.filter(room=room).filter().first()
+        room_with_images.append({
+            'room':room,
+            'images':images
+        })
+    context = {'room_with_images':room_with_images}
     return render(request,'MyRoom_Page.html',context,status=200)
 
 
@@ -77,7 +83,6 @@ def room_update_view(request,room_id,*args,**kwargs):
         room_form = RoomForm(request.POST or None, instance=room)
         image_form = ImageForm()
         images = request.FILES.getlist('image')
-        print(images)
         if room_form.is_valid():
             room_form.save()
             if len(images) > 0:
