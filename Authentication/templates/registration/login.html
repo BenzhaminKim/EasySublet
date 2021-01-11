@@ -44,8 +44,12 @@ Log In
                 </div>
             </div>
         </div>
+
         <div class="form-group d-flex justify-content-center">
-            <a class="col-lg-5 col-sm-12 btn btn-warning" href="#">Continue with Google</a>
+            <a class="col-lg-5 col-sm-12 btn btn-warning" href="{% url 'social:begin' 'github' %}">Continue with Github</a>
+        </div>
+        <div class="form-group d-flex justify-content-center">        
+            <a class="col-lg-5 col-sm-12 btn btn-warning" href="{% url 'social:begin' 'google-oauth2' %}">Continue with Google</a>
         </div>
     </form>
 </div>

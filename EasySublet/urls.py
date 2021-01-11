@@ -33,6 +33,7 @@ urlpatterns = [
     path('api/room/list', api_room_list_view, name='api_room_list_view'),
     path('api/room/all', api_room_all_view, name='api_room_all_view'),
     path('api/',include('RoomRental.urls')),
+    path('oauth/', include("social_django.urls", namespace='social')),
 ] 
 
 if settings.DEBUG:

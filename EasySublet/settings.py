@@ -27,8 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "postmaster@sandbox2c8e267a002d430292e1d81dc6451869.mailgun.org"
+EMAIL_HOST_PASSWORD = "22b3655d613cf54128ef85ee0cab3fc7-28d78af2-c0355338"
+EMAIL_USE_TLS = True
+
 LOGIN_REDIRECT_URL = "/room/list"
 LOGIN_URL = '/authentication/accounts/login'
 LOGOUT_REDIRECT_URL = "/authentication/accounts/login"
@@ -45,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'RoomRental',
     'rest_framework',
+    'crispy_forms',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
+
 
 ROOT_URLCONF = 'EasySublet.urls'
 
@@ -70,12 +78,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 WSGI_APPLICATION = 'EasySublet.wsgi.application'
+
 
 
 # Database
@@ -132,3 +153,8 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR,"static_cdn")
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+SOCIAL_AUTH_GITHUB_KEY = 'f10911476d850388026f'
+SOCIAL_AUTH_GITHUB_SECRET = '929899d70eb8a59331d1f6541ce8057a565fd60d'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '23907735981-0meafgdcekcvk0th5btnk4f8i8h0s0de.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'dTE2WBjzm998FShEtaydAxNO'
