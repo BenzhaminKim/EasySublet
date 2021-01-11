@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import GoogleMapReact from 'google-map-react';
 import useSwr from "swr";
 import useSupercluster from 'use-supercluster';
+import PriceMarker from './PriceMarker';
 
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
@@ -49,7 +50,7 @@ export default function GoogleMap(props) {
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDrXGchsr2Z6YkgR5WLTvDhBAfU00aMYf8' }}
         defaultCenter={{ lat: 43.6532, lng: -79.335171 }}
-        defaultZoom={10}
+        defaultZoom={1}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({map})=>{
             mapRef.current = map;
@@ -88,9 +89,7 @@ export default function GoogleMap(props) {
               }
               return(
                 <Marker key={cluster.properties.roomId} lat={latitude} lng={longitude}>
-                    <button className="btn btn-success">
-                        <b>$ {cluster.properties.roomPrice}</b>
-                    </button>
+                    <PriceMarker price={cluster.properties.roomPrice} roomId={cluster.properties.roomId}/>
                 </Marker>
               );
           })}

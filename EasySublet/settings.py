@@ -27,11 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = '/authentication/login'
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
+LOGIN_REDIRECT_URL = "/room/list"
+LOGIN_URL = '/authentication/accounts/login'
+LOGOUT_REDIRECT_URL = "/authentication/accounts/login"
 
 # Application definition
 
 INSTALLED_APPS = [
+    'Authentication',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'RoomRental',
-    'Authentication',
     'rest_framework',
 ]
 

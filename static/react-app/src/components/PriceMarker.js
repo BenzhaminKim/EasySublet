@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 
-function PriceMarker({roomId,roomPrice}) {
+function PriceMarker({roomId,price}) {
 
   return (
-    <a  className="row m-1" href={'http://localhost:8000/room/detail/'+roomId } >
-        <button className="btn btn-success">
-            <b>$ {roomPrice}</b>
-        </button>
+    <a  className="btn btn-success" href={'http://localhost:8000/room/detail/'+roomId } >
+      <b>$ {price}</b>
     </a>
   );
 }

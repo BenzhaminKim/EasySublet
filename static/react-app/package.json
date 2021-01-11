@@ -28,6 +28,7 @@
     "axios": "^0.21.1",
     "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
+    "react-router-dom": "^5.2.0",
     "supercluster": "^7.1.0",
     "swr": "^0.3.11",
     "use-supercluster": "^0.2.9"

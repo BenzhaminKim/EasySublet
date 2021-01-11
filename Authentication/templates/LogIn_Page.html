@@ -12,7 +12,7 @@ Log In
 </div>
 <hr/>
 <div class="row text-center">
-    <form class="col-12" action="/authentication/login" method="POST">
+    <form class="col-12" action="/authentication/login/" method="POST">
         {% csrf_token %}
         <div class="form-group d-flex justify-content-center">
             <input class="col-lg-5 col-sm-12 form-control" type="text" name="username" placeholder="User ID"/>
@@ -30,7 +30,7 @@ Log In
                         <a class="font-weight-bold" href="#">Register for an account?</a>
                     </div>
                     <div class="ml-auto">
-                        <a class="font-weight-bold" href="#">Forgot password?</a>
+                        <a class="font-weight-bold" href="{% url 'password_reset' %}">Forgot password?</a>
                     </div>
                 </div>
             </div>

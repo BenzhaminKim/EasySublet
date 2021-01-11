@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import GoogleMap from './googleMap.js';
 import RoomList from './RoomList.js';
 import axios from 'axios';
@@ -27,16 +28,18 @@ export default function App() {
 
 
     return (
-        <div className="row m-0" style={{ width: '100%' }}>
-            <div className="col-3 scroll-container">
-                <RoomList rooms={rooms} />
+        <Router>
+            <div className="row m-0" style={{ width: '100%' }}>
+                <div className="col-3 scroll-container">
+                    <RoomList rooms={rooms} />
+                </div>
+                <div className="col-9 p-0">
+                    <GoogleMap onChange={(bounds)=>{
+                        setBounds(bounds);
+                    }}/>
+                </div>
             </div>
-            <div className="col-9 p-0">
-                <GoogleMap onChange={(bounds)=>{
-                    setBounds(bounds);
-                }}/>
-            </div>
-        </div>
+        </Router>
     );
     
 }
