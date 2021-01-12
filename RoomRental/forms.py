@@ -30,10 +30,10 @@ class RoomForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter a title'}),
             'address' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter a address'}),
-            'latitude' : forms.TextInput(attrs={'class':'form-control w-25', 'placeholder':'Enter a latitude'}),
-            'longitude' : forms.TextInput(attrs={'class':'form-control w-25', 'placeholder':'Enter a longitude'}),
+            'latitude' : forms.TextInput(attrs={'class':'form-control w-50', 'placeholder':'Enter a latitude'}),
+            'longitude' : forms.TextInput(attrs={'class':'form-control w-50', 'placeholder':'Enter a longitude'}),
             'description' : forms.Textarea(attrs={'class':'form-control', 'placeholder':"Describe the decor, light, what's nearby, ect...",'rows':5}),
-            'price' : forms.TextInput(attrs={'class':'form-control w-25', 'placeholder':'Enter a price'}),
+            'price' : forms.TextInput(attrs={'class':'form-control w-50', 'placeholder':'Enter a price'}),
             'is_parking' : forms.CheckboxInput(attrs={'class':'d-none'}),
             'is_pet' : forms.CheckboxInput(attrs={'class':'d-none'}),
             'is_smoking' : forms.CheckboxInput(attrs={'class':'d-none'}),

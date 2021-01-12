@@ -50,6 +50,17 @@ def room_detail_view(request,room_id,*args,**kwargs):
 
     return render(request,'RoomDetail_Page.html',context,status=200)
 
+def room_images_view(request,room_id,*args,**kwargs):
+    '''
+    Room Detail Page View
+    '''
+
+    room = get_object_or_404(Room, pk = room_id)
+    images = Image.objects.filter(room=room)
+    context = {'images':images, 'room_id':room_id }
+
+    return render(request,'Room_Images_Page.html',context,status=200)
+
 @login_required
 def room_create_view(request,*args,**kwargs):
     '''

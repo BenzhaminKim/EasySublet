@@ -17,7 +17,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from RoomRental.views import home_view, room_list_view, room_detail_view,room_create_view, room_update_view, room_delete_view, my_room_list_view
+from RoomRental.views import home_view, room_list_view, room_detail_view,room_create_view, room_update_view, room_delete_view, my_room_list_view, room_images_view
 from RoomRental.api import api_room_list_view,api_room_all_view
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('', room_list_view, name='home_view'),
     path('room/list', room_list_view, name='room_list_view'),
     path('room/myroom', my_room_list_view, name='my_room_list_view'),
+    path('room/detail/<int:room_id>/images', room_images_view, name='room_images_view'),
     path('room/detail/<int:room_id>', room_detail_view, name='room_detail_view'),
     path('room/update/<int:room_id>', room_update_view, name='room_update_view'),
     path('room/delete/<int:room_id>', room_delete_view, name='room_delete_view'),

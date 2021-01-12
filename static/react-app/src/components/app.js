@@ -30,10 +30,10 @@ export default function App() {
     return (
         <Router>
             <div className="row m-0" style={{ width: '100%' }}>
-                <div className="col-3 scroll-container">
+                <div className="col-4 p-0 scroll-container">
                     <RoomList rooms={rooms} />
                 </div>
-                <div className="col-9 p-0">
+                <div className="col-8 p-0">
                     <GoogleMap onChange={(bounds)=>{
                         setBounds(bounds);
                     }}/>

@@ -6,7 +6,7 @@ Room Detail
 {% endblock title%}
 
 {% block content %}
-<div class="row">
+<a class="row" href="{% url 'room_images_view' room.id %}">
     <div class="col-6">
         <img class="rounded" style="width: 100%;" src="{{ images.0.image.url}}">
     </div>
@@ -29,7 +29,7 @@ Room Detail
             
         </div>
     </div>
-</div>
+</a>
 
 <div class="pb-5">
     
