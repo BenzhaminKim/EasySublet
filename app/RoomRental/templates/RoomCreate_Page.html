@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+Room Create
+{% endblock title%}
+
+{% block content %}
+<h1>{{page}}</h1>
+
+<form method="POST" enctype="multipart/form-data" >{% csrf_token %}
+    
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group pt-2 pb-2">
+                    <h5 class="text-secondary">Enter a title for your room</h5>
+                    {{room_form.title}}
+                    <span asp-validation-for="Room.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2 pb-2">
+                    <h5 class="text-secondary">Where is the location?</h5>
+                    <div class=" ">
+                        {{room_form.address}}
+                        <span asp-validation-for="Room.Address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group pt-2 pb-2">
+                    <h5 class="text-secondary">Enter a price of your room</h5>
+                    {{room_form.price}}
+                    <span asp-validation-for="Room.Price" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    {{room_form.latitude}}
+                    <span asp-validation-for="Room.Lat" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" >
+                    {{room_form.longitude}}
+                    <span asp-validation-for="Room.Lng" class="text-danger"></span>
+                </div>
+
+                <div class="form-group pt-2 pb-2">
+                    <h5 class="text-secondary">Enter a move-in date</h5>
+                    <div class=" ">
+                        {{room_form.movein_date}}
+                        <span asp-validation-for="Room.Moveindate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <h2 class="pt-5 pb-5 text-body text">Add photos to your listing</h2>
+                    <p class="text-secondary font-italic">Photos help guests imagine staying in your place. You can start with one and add more after you publish.</p>
+                    <div class="col-md-10">
+                        {{image_form.as_p}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row pt-2 pb-2">
+            <div class="col-6">
+                <h5 class="text-secondary">Is parking allowed?</h5>
+            </div>
+            <div class="col-6">
+                <div class="col-4 btn btn-primary font-weight-bold" id="park-no">NO</div>
+                <div class="col-4 btn btn-outline-primary font-weight-bold" id="park-yes">Yes</div>
+                {{room_form.is_parking}}
+            </div>
+            <span asp-validation-for="Room.IsParking" class="text-danger"></span>
+        </div>
+
+        <div class="row pt-2 pb-2">
+            <div class="col-6">
+                <h5 class="text-secondary">Is a pet allowed?</h5>
+            </div>
+            <div class="col-6">
+                <div class="col-4 btn btn-primary font-weight-bold" id="pet-no">NO</div>
+                <div class="col-4 btn btn-outline-primary font-weight-bold" id="pet-yes">Yes</div>
+                {{room_form.is_pet}}
+            </div>
+            <span asp-validation-for="Room.IsPetFriendly" class="text-danger"></span>
+        </div>
+
+        <div class="row pt-2 pb-2">
+            <div class="col-6">
+                <h5 class="text-secondary">Is smoking allowed?</h5>
+            </div>
+            <div class="col-6">
+                <div class="col-4 btn btn-primary font-weight-bold" id="smoking-no">NO</div>
+                <div class="col-4 btn btn-outline-primary font-weight-bold" id="smoking-yes">Yes</div>
+                {{room_form.is_smoking}}
+            </div>
+            <span asp-validation-for="Room.IsSmoking" class="text-danger"></span>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-12">
+                <h2>What utilities do you offer?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Hydro">Hydro</div>
+                {{room_form.has_hydro}}
+            </div> 
+
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Airconditioning">Air conditioning</div>
+                {{room_form.has_aircondition}}
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Water">Water</div>
+                {{room_form.has_water}}
+            </div>
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Heat">Heat</div>
+                {{room_form.has_heat}}
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Wifi">Wifi</div>
+                {{room_form.has_wifi}}
+            </div>
+            <div class="col-sm-12 col-lg-6">
+
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="TV">TV</div>
+                {{room_form.has_tv}}
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-12">
+                <h2>What appliances do you offer?</h2>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Landuary">Landuary</div>
+                {{room_form.has_laundry}}
+            </div>
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Dishwasher">Dishwasher</div>
+                {{room_form.has_dishwasher}}
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Dryer">Dryer</div>
+                {{room_form.has_dryer}}
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Fridge">Fridge</div>
+                {{room_form.has_fridge}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="m-1 btn btn-outline-primary btn-block btn-lg font-weight-bold" id="Microwave">Microwave</div>
+                {{room_form.has_microwave}}
+            </div>
+
+        </div>
+
+
+        <hr />
+
+        <div class="row">
+            <div class="col-12">
+                <h2 class="pt-5 pb-5">Describe your place</h2>
+                <div class="form-group">
+                    <div>
+                        <p>Write a quick summary of your place. You can highlight what’s special about your space, the neighborhood, and how you’ll interact with guests.</p>
+                    </div>
+                    <div class="col-md-10">
+                        {{room_form.description}}
+                        <span asp-validation-for="Description.MainDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</form>
+{% endblock content %}
+
+{% block js %}
+
+<script src="{% static '/js/create_room.js' %}"></script>
+
+<script>
+    var autocomplete;
+    var place;
+    function activatePlaceSearch() {
+        var input = document.getElementById('id_address');
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.addListener('place_changed', geolocate);
+    }
+    function geolocate() {
+        place = autocomplete.getPlace();
+        var geoLat = place.geometry.location.lat();
+        var geoLng = place.geometry.location.lng();
+        console.log(geoLat, geoLng);
+        var LatBox = document.getElementById('id_latitude');
+        var LngBox = document.getElementById('id_longitude');
+        LatBox.value = geoLat;
+        LngBox.value = geoLng;
+    }
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrXGchsr2Z6YkgR5WLTvDhBAfU00aMYf8&libraries=places&callback=activatePlaceSearch"></script>
+{% endblock js %}
