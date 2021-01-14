@@ -76,7 +76,7 @@ def room_create_view(request,*args,**kwargs):
             room.save()
             for image in images:
                 Image.objects.create(room=room, image=image)
-            return redirect('room_list_view')
+            return redirect('room_detail_view',room_id=room.id)
 
     room_form = RoomForm()
     image_form = ImageForm()
@@ -101,7 +101,7 @@ def room_update_view(request,room_id,*args,**kwargs):
                 prev_images.delete()
                 for image in images:
                     Image.objects.create(room=room, image=image)
-            return redirect('room_list_view')
+            return redirect('room_detail_view',room_id=room.id)
         context = {'page':'Update Room page','room_form' : room_form,'image_form':image_form}
         return render(request,'RoomCreate_Page.html',context,status=200)
     else:

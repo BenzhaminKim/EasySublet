@@ -204,4 +204,26 @@ Room Create
 {% block js %}
 
 <script src="{% static '/js/create_room.js' %}"></script>
+
+<script>
+    var autocomplete;
+    var place;
+    function activatePlaceSearch() {
+        var input = document.getElementById('id_address');
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.addListener('place_changed', geolocate);
+    }
+    function geolocate() {
+        place = autocomplete.getPlace();
+        var geoLat = place.geometry.location.lat();
+        var geoLng = place.geometry.location.lng();
+        console.log(geoLat, geoLng);
+        var LatBox = document.getElementById('id_latitude');
+        var LngBox = document.getElementById('id_longitude');
+        LatBox.value = geoLat;
+        LngBox.value = geoLng;
+    }
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrXGchsr2Z6YkgR5WLTvDhBAfU00aMYf8&libraries=places&callback=activatePlaceSearch"></script>
 {% endblock js %}

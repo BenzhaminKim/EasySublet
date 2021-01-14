@@ -40,14 +40,14 @@ class Image(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE,related_name="images")
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    default = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    def save(self,*args,**kwargs):
-        super().save(*args,**kwargs)
-        img = PIL.Image.open(self.image.path)
-        output_size = (1000,1000)
-        img.thumbnail(output_size)
-        img.save(self.image.path)
+    # def save(self,*args,**kwargs):
+    #     super().save(*args,**kwargs)
+    #     img = PIL.Image.open(self.image.path)
+    #     output_size = (1000,1000)
+    #     img.thumbnail(output_size)
+    #     img.save(self.image.path)
 
     def __str__(self):
         return self.image.name
