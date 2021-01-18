@@ -5,6 +5,7 @@ import RoomList from './RoomList.js';
 import axios from 'axios';
 
 export default function App() {
+    console.log('works')
     const [bounds,setBounds] = useState({nw:{lat:0,lng:0},se:{lat:0,lng:0},sw:{lat:0,lng:0},ne:{lat:0,lng:0}});
     const [rooms,setRooms] = useState([]);
 
