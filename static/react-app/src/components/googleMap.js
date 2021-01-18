@@ -16,7 +16,7 @@ export default function GoogleMap(props) {
 
   // load and prepare data
   const url =
-  "http://localhost:8000/api/room/all";
+  "http://ec2-15-164-226-5.ap-northeast-2.compute.amazonaws.com/api/room/all";
   const {data, error} = useSwr(url, fetcher);
   const rooms = data && !error ? data : [];
   const points = rooms.map(room =>({

@@ -9,7 +9,7 @@ export default function App() {
     const [rooms,setRooms] = useState([]);
 
     const fetchRooms=()=>{
-        axios.get(`http://localhost:8000/api/room/list`,{
+        axios.get(`http://ec2-15-164-226-5.ap-northeast-2.compute.amazonaws.com/api/room/list`,{
                 params: {
                     nw_lat : bounds.nw.lat,
                     nw_lng : bounds.nw.lng,
