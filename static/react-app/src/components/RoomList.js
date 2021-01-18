@@ -7,7 +7,7 @@ import Room from './Room';
 function RoomList({rooms}) {
   return (
     <div >
-        <div className="text-primary row m-2"><h3 className="col-12 text-center">{rooms.length} Rooms</h3></div>
+        <div className="text-primary row m-2"><h3 className="col-lg-12 text-center">{rooms.length} Rooms</h3></div>
         <div className="row m-0">
         {rooms.map(room => {
               return(

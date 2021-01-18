@@ -29,7 +29,7 @@ class Room(models.Model):
     has_dishwasher = models.fields.BooleanField(default=False)
     has_dryer = models.fields.BooleanField(default=False)
     has_microwave = models.fields.BooleanField(default=False)
-    movein_date = models.fields.DateTimeField(default=now().date(), blank=False)
+    movein_date = models.fields.DateTimeField(blank=True, null=True)
     created_on = models.fields.DateTimeField(auto_now=True)
 
 

@@ -6,6 +6,14 @@ name = "pypi"
 [packages]
 pillow = "*"
 djangorestframework = "*"
+gunicorn = "*"
+django-crispy-forms = "*"
+"boto3" = "*"
+django-storages = "*"
+social-auth-app-django = "*"
+django-environ = "*"
+"psycopg2-binary" = "==2.8.5"
+python-dotenv = "*"
 
 [dev-packages]
 django = "*"
