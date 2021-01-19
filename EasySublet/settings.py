@@ -196,7 +196,7 @@ LOGGING = {
   }
  },
  'loggers': {
-  'signal': {
+  '': {
    'handlers': ['logger'],
    'level': 'DEBUG',
   }

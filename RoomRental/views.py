@@ -6,11 +6,11 @@ from .forms import RoomForm, ImageForm
 import logging
 # Create your views here.
 
+logger = logging.getLogger(__name__)
 def home_view(request,*args,**kwargs):
     '''
     Home Page View
     '''
-    logger = logging.getLogger("loggers")
     logger.info(request)
     return render(request,'Common/Home_Page.html')
 
@@ -18,7 +18,6 @@ def room_list_view(request, *args, **kwargs):
     '''
     Room List Page View
     '''
-    logger = logging.getLogger("loggers")
 
     rooms = Room.objects.all()
     context = {'rooms':rooms}
@@ -30,7 +29,6 @@ def my_room_list_view(request, *args, **kwargs):
     Room List Page View
     '''
 
-    logger = logging.getLogger("loggers")
     rooms = Room.objects.filter(user=request.user)
     room_with_images = []
     for room in rooms:
@@ -48,20 +46,18 @@ def room_detail_view(request,room_id,*args,**kwargs):
     '''
     Room Detail Page View
     '''
-    logger = logging.getLogger("loggers")
     room = get_object_or_404(Room, pk = room_id)
     images = Image.objects.filter(room=room)
     
     context = {'room': room, 'images':images }
     logger.info(context)
-
+    print(context)
     return render(request,'RoomDetail_Page.html',context,status=200)
 
 def room_images_view(request,room_id,*args,**kwargs):
     '''
     Room Detail Page View
     '''
-    logger = logging.getLogger("loggers")
 
     room = get_object_or_404(Room, pk = room_id)
     images = Image.objects.filter(room=room)
@@ -75,7 +71,6 @@ def room_create_view(request,*args,**kwargs):
     '''
     Room Create Page View
     '''
-    logger = logging.getLogger("loggers")
     if request.method == 'POST':
         room_form = RoomForm(request.POST)
         images = request.FILES.getlist('image')
@@ -101,7 +96,6 @@ def room_update_view(request,room_id,*args,**kwargs):
     '''
     Room Update Page View
     '''
-    logger = logging.getLogger("loggers")
     room = get_object_or_404(Room, pk = room_id)
     if request.user == room.user:
         room_form = RoomForm(request.POST or None, instance=room)
