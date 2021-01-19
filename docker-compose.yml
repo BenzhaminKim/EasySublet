@@ -44,6 +44,6 @@ services:
         - elasticsearch
       depends_on:
         - elasticsearch
-  networks:
-    efk:
-      driver: bridge
+networks:
+  efk:
+    driver: bridge
